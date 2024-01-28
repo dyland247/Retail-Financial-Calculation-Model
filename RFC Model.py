@@ -1,4 +1,4 @@
-# Install required libraries
+
 # pip install pandas numpy
 
 import pandas as pd
@@ -22,19 +22,19 @@ for _ in range(num_entries):
     data['Sales'].append(sales)
     data['Cost'].append(cost)
 
-# Create a DataFrame
+# Creates a DataFrame
 df = pd.DataFrame(data)
 
-# Calculate average order cost
+# Calculates average order cost
 df['OrderCost'] = df.groupby('Date')['Cost'].transform(calculate_average_order_cost)
 
-# Calculate daily sales
+# Calculates daily sales
 daily_sales = df.groupby('Date')['Sales'].sum()
 
-# Calculate profit margins
+# Calculates profit margins
 df['ProfitMargin'] = (df['Sales'] - df['Cost']) / df['Sales'] * 100
 
-# Display the results
+# Results
 print("\nAverage Order Cost:")
 print(df[['Date', 'Product', 'OrderCost']])
 print("\nDaily Sales:")
